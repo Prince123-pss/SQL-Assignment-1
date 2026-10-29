@@ -1,0 +1,23 @@
+create database Employee;
+drop database employee;
+use employee;
+create table Departments(Department_id int primary key,Department_name varchar(100));
+create table Location(Location_id int primary key,Location varchar(30));
+create table Employees(Employee_id integer,Employee_name varchar(50),Gender enum('M','F'),Age int,Hire_date date,Designation varchar(100),Department_id int,Location_id int,salary decimal(10.2),foreign key(Department_id)references Departments(Department_id),foreign key(Location_id) references Location(Location_id));
+alter table employees add column (Email varchar(40));
+alter table employees modify Designation varchar(101);
+alter table Employees drop column age;
+alter Table Employees rename column Hire_date to Date_of_Joining;
+rename table Departments to Departments_info;
+rename table Location to Locations;
+truncate table  employees;
+drop table Employees;
+drop table Departments_info;
+drop table Locations;
+drop database employee;
+create database Employee;
+use employee;
+create table Departments(Department_id int unique not null primary key,Department_name varchar(100));
+create table Location(Location_id int unique auto_increment primary key,Location_name varchar(30) unique not null);
+create table Employees(Eployee_id int unique primary key,Employee_name varchar(50) not null,Gender enum('M','F'),Age int check(Age>=18),Department_id int,Location_id int,foreign key(Department_id) references Departments(Department_id),foreign key(Location_id) references Location (Location_id));
+
